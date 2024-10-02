@@ -1,11 +1,11 @@
 
-const body = ddocument.querySelector(".body");
 const container = document.querySelector(".container");
+const buttonContainer = document.querySelector("div");
 
 const button = document.createElement('button')
-button.setAttribute('style', 'height: 100px; width: 100px; background-color: black; color: white');
-button.innerHTML = "Click Me!";
-body.appendChild(button);
+button.setAttribute('style', 'height: 100px; width: 100px; background-color: black; color: white;');
+button.innerHTML = "Generate Grid";
+buttonContainer.appendChild(button);
 
 button.addEventListener('click', numberofSquares);
 
@@ -17,9 +17,9 @@ function numberofSquares(){
         for (test = 1; test <= number; test += 1){
             for (n = 1; n <= number; n += 1){
                 const box = document.createElement("div");
-                box.setAttribute('style', 'class: col; background-color: red; height: 50px; width: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
-                // container.appendChild(box);
-                // button.nextSibling(box);
+                box.setAttribute('style', 'class: col; background-color: red; height: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
+                box.setAttribute('style', 'width: calc(100%/number);');
+                container.appendChild(box);
 
                 function pixelated() {
                     box.setAttribute('style', 'background-color: blue; height: 50px; width: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
@@ -34,8 +34,12 @@ function numberofSquares(){
             }
         }
     }
+    else if (number > 100){
+        alert(number + " is too high, try again!");
+        numberofSquares();
+    }
     else {
-        alert(number + " is too high!");
+        alert("Invalid Input, try again!")
         numberofSquares();
     }
 }
