@@ -39,13 +39,8 @@ function numberofSquares(number){
                 box.style.backgroundColor = '#387478';
             }
 
-            function normal(){
-                box.style.backgroundColor = '#E2F1E7';
-            }
-
             // event listeners
             box.addEventListener('mouseover', pixelated);
-            box.addEventListener('mouseout', normal);
         }
     }
     else if (number > 100){
