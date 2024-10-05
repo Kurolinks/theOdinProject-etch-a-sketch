@@ -1,37 +1,51 @@
 
 const container = document.querySelector(".container");
-const buttonContainer = document.querySelector("div");
+const buttonContainer = document.querySelector(".buttonContainer");
+
+container.style.width = '960px';
+container.style.display = 'flex';
+container.style.flexWrap = 'wrap';
 
 const button = document.createElement('button')
 button.setAttribute('style', 'height: 100px; width: 100px; background-color: black; color: white;');
 button.innerHTML = "Generate Grid";
 buttonContainer.appendChild(button);
 
-button.addEventListener('click', numberofSquares);
+numberofSquares(16);
 
-function numberofSquares(){
-    const number = prompt("How many Squares per side do you want?");
+
+function howManySquares(){
+    numberofSquares(prompt("How many Squares per side do you want?"));
+}
+
+function numberofSquares(number){
+    // Clear previous grid
+    container.innerHTML = '';
+
+    // const number = prompt("How many Squares per side do you want?");
+    let squareSize = 960/number;
 
     // create grid divs
     if(number <= 100){
-        for (test = 1; test <= number; test += 1){
-            for (n = 1; n <= number; n += 1){
-                const box = document.createElement("div");
-                box.setAttribute('style', 'class: col; background-color: red; height: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
-                box.setAttribute('style', 'width: calc(100%/number);');
-                container.appendChild(box);
+        for (let test = 1; test <= number * number; test++){
+            const box = document.createElement("div");
+            box.style.width = `${squareSize}px`;
+            box.style.backgroundColor = '#E2F1E7';
+            box.style.height = `${squareSize}px`;3
+            box.style.flex= '0 o auto';
+            container.appendChild(box);
 
-                function pixelated() {
-                    box.setAttribute('style', 'background-color: blue; height: 50px; width: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
-                }
-
-                function normal(){
-                    box.setAttribute('style', 'background-color: red; height: 50px; width: 50px; border: 1px solid black; flex-wrap: wrap; flex: 1 0 300px');
-                }
-
-                box.addEventListener('mouseover', pixelated);
-                // box.addEventListener('mouseout', normal);
+            function pixelated() {
+                box.style.backgroundColor = '#387478';
             }
+
+            function normal(){
+                box.style.backgroundColor = '#E2F1E7';
+            }
+
+            // event listeners
+            box.addEventListener('mouseover', pixelated);
+            box.addEventListener('mouseout', normal);
         }
     }
     else if (number > 100){
@@ -44,13 +58,5 @@ function numberofSquares(){
     }
 }
 
-// Be careful with borders and margins, as they can adjust the size of the squares!
-// “OMG, why isn’t my grid being created???”
-
-
-// Add a button on the top of the screen that will send the user a popup asking for the number of squares per side for the new grid. Once entered, the existing grid should be removed, and a new grid should be generated in the same total space as before (e.g., 960px wide) so that you’ve got a new sketch pad.
-// Tip: Set the limit for the user input to a maximum of 100. A larger number of squares results in more computer resources being used, potentially causing delays, freezing, or crashing that we want to prevent.
-// Research button tags in HTML and how you can make a JavaScript function run when one is clicked.
-// Also check out prompts.
-// You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used.
-// Push your project to GitHub!
+// numberofSquares();
+button.addEventListener('click', howManySquares);
