@@ -1,3 +1,9 @@
+body {
+    background-color: #FFEEAD;
+    display: flex;
+    justify-content: space-around;
+}
+
 .container:hover {
     background-color: blue;
     cursor: pointer;

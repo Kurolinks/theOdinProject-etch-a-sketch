@@ -2,13 +2,13 @@
 const container = document.querySelector(".container");
 const buttonContainer = document.querySelector(".buttonContainer");
 
-container.style.width = '960px';
+container.style.width = '580px';
 container.style.display = 'flex';
 container.style.flexWrap = 'wrap';
 
 const button = document.createElement('button')
 button.setAttribute('style', 'height: 100px; width: 100px; background-color: black; color: white;');
-button.innerHTML = "Generate Grid";
+button.innerHTML = "Generate New Grid";
 buttonContainer.appendChild(button);
 
 numberofSquares(16);
@@ -23,7 +23,7 @@ function numberofSquares(number){
     container.innerHTML = '';
 
     // const number = prompt("How many Squares per side do you want?");
-    let squareSize = 960/number;
+    let squareSize = 580/number;
 
     // create grid divs
     if(number <= 100){
