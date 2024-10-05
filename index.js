@@ -11,6 +11,8 @@ button.setAttribute('style', 'height: 100px; width: 100px; background-color: bla
 button.innerHTML = "Generate New Grid";
 buttonContainer.appendChild(button);
 
+let random = Math.random().toString().substr(2, 6);
+
 numberofSquares(16);
 
 
@@ -36,7 +38,8 @@ function numberofSquares(number){
             container.appendChild(box);
 
             function pixelated() {
-                box.style.backgroundColor = '#387478';
+                // box.style.backgroundColor = '#387478';
+                box.style.backgroundColor = getRandomColor();
             }
 
             // event listeners
@@ -52,6 +55,16 @@ function numberofSquares(number){
         numberofSquares();
     }
 }
+
+// Get random colors
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
 // numberofSquares();
 button.addEventListener('click', howManySquares);

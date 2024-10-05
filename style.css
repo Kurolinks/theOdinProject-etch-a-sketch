@@ -9,3 +9,7 @@ body {
     background-color: blue;
     cursor: pointer;
 }
+
+.buttonContainer {
+    margin-top: 15%;
+}
